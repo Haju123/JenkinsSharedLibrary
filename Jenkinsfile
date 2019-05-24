@@ -15,18 +15,13 @@ try{
     
    stage('Setup and initialization') { 
        setup "MAVEN_HOME", "https://github.com/ChandniManak/MVC.git"
-   
    }
-  
-   
     
     stage('Quality check with SonarQube'){
       sonarQube "SONAR_SERVER", "MAVEN_HOME"
     }
     
-    
     stage("SonarQube Quality Gate") { 
-    
        sonarQualityGate "SONAR_SERVER"
     }
     
@@ -47,6 +42,7 @@ try{
     )
     }
     }
+    
     catch(e){
     
     stage('Job Success Notification'){
@@ -55,7 +51,7 @@ try{
       body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
         <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-    )
+      )
     }
     
    }
