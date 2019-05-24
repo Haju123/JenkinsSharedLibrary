@@ -8,7 +8,7 @@ def call(String artifactoryName, String artifact, String repo){
         "files": [
             {
                 "pattern": "${artifact}",
-                "target": ""${repo}"/${BUILD_NUMBER}/"
+                "target": "${repo}/${BUILD_NUMBER}/"
             }
         ]
         }
