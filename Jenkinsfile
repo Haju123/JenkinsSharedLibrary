@@ -9,6 +9,14 @@ node {
    
    }
   
+    stage('Job Started Notification'){
+      emailext (
+      subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+        <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+      recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+    )
+    }
     
     stage('Quality check with SonarQube'){
       sonarQube "SONAR_SERVER", "MAVEN_HOME"
@@ -27,5 +35,7 @@ node {
     stage('Deploy Artifacts'){
         deployArtifacts "JFrog_Artifactory", "./target/*.war", "local-snapshot"
     }
+    
+    
 
 }
