@@ -46,6 +46,7 @@ try{
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
     )
     }
+    }
     catch(e){
     
     stage('Job Success Notification'){
