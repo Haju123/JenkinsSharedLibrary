@@ -1,6 +1,6 @@
 @Library('shared_library')_
 
-node {
+node(label:'SLAVE01') {
 
 try{
 
