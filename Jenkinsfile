@@ -30,7 +30,7 @@ try{
     }
     
     stage('Deploy Artifacts'){
-        deployArtifacts "Frog_Artifactory", "./target/*.war", "local-snapshot"
+        deployArtifacts "JFrog_Artifactory", "./target/*.war", "local-snapshot"
     }
     
      stage('Job Success Notification'){
