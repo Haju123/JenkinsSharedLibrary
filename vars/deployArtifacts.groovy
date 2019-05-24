@@ -1,6 +1,6 @@
 def call(String artifactoryName, String artifact, String repo){
         echo 'inside artifact script'
-        def SERVER_ID = ${artifactoryName} 
+        def SERVER_ID = "${artifactoryName}" 
         def server = Artifactory.server SERVER_ID
         def uploadFile = 
         """
@@ -8,7 +8,7 @@ def call(String artifactoryName, String artifact, String repo){
         "files": [
             {
                 "pattern": "${artifact}",
-                "target": "${repo}/${BUILD_NUMBER}/"
+                "target": ""${repo}"/${BUILD_NUMBER}/"
             }
         ]
         }
