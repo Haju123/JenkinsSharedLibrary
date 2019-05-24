@@ -47,7 +47,7 @@ node {
     }
     
     stage('Deploy Artifacts'){
-        deployArtifacts 'JFrog_Artifactory', './target/*.war', 'local-snapshot'
+        deployArtifacts "JFrog_Artifactory", "./target/*.war", "local-snapshot"
     }
 
 }
