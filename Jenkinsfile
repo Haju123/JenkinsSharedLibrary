@@ -1,5 +1,7 @@
 @Library('shared_library')_
 
+def mvnHome
+
 node {
 
    stage('Setup and initialization') { 
