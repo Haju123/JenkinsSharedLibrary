@@ -1,3 +1,5 @@
+@Library('shared_library')_
+
 node {
    def mvnHome
    def sonarCloudProperties
