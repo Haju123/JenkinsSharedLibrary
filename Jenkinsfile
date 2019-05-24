@@ -35,7 +35,7 @@ try{
     }
     
     stage('Deploy Artifacts'){
-        deployArtifacts "JFrog_Artifactory", "./target/*.war", "local-snapshot"
+        deployArtifacts "Frog_Artifactory", "./target/*.war", "local-snapshot"
     }
     
      stage('Job Success Notification'){
