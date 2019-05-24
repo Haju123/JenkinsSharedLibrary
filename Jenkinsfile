@@ -46,7 +46,7 @@ try{
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
     )
     }
-    catch(){
+    catch(e){
     
     stage('Job Success Notification'){
       emailext (
