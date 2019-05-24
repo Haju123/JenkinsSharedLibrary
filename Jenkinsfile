@@ -1,15 +1,10 @@
 @Library('shared_library')_
 
-def mvnHome
-
 node {
 
-   stage('Setup and initialization') { 
-       setup "MAVEN_HOME", "https://github.com/ChandniManak/MVC.git"
-   
-   }
-  
-    stage('Job Started Notification'){
+try{
+
+ stage('Job Started Notification'){
       emailext (
       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
       body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
@@ -17,6 +12,13 @@ node {
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
     )
     }
+    
+   stage('Setup and initialization') { 
+       setup "MAVEN_HOME", "https://github.com/ChandniManak/MVC.git"
+   
+   }
+  
+   
     
     stage('Quality check with SonarQube'){
       sonarQube "SONAR_SERVER", "MAVEN_HOME"
@@ -36,6 +38,25 @@ node {
         deployArtifacts "JFrog_Artifactory", "./target/*.war", "local-snapshot"
     }
     
+     stage('Job Success Notification'){
+      emailext (
+      subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+        <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+      recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+    )
+    }
+    catch(){
     
+    stage('Job Success Notification'){
+      emailext (
+      subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+        <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+      recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+    )
+    }
+    
+   }
 
 }
