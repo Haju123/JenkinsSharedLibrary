@@ -4,7 +4,7 @@ node {
 
 try{
 
- stage('Job Started Notification'){
+ stage('Send Job Started Notification'){
       emailext (
       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
       body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
@@ -33,7 +33,7 @@ try{
         deployArtifacts "JFrog_Artifactory", "./target/*.war", "local-snapshot"
     }
     
-     stage('Job Success Notification'){
+     stage('Send Job Success Notification'){
       emailext (
       subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
       body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
@@ -45,7 +45,7 @@ try{
     
     catch(e){
     
-    stage('Job Failure Notification'){
+    stage('Send Job Failure Notification'){
       emailext (
       subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
       body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
