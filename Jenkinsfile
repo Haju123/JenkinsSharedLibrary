@@ -45,7 +45,7 @@ try{
     
     catch(e){
     
-    stage('Job Success Notification'){
+    stage('Job Failure Notification'){
       emailext (
       subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
       body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
