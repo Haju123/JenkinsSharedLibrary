@@ -8,7 +8,7 @@ node {
    stage('Setup and initialization') { 
        
     // Get some code from a GitHub repository
-    git 'https://github.com/ChandniManak/maven-project.git'
+    git 'https://github.com/ChandniManak/MVC.git'
       
     // Get the Maven tool
     mvnHome = tool 'MAVEN_HOME'
