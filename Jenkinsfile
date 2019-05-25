@@ -35,7 +35,7 @@ try{
     }
     
     stage('Upload image to docker hub'){
-        uploadImage "chandnimanak/project"
+        uploadDockerImage "chandnimanak/project"
     }
     
      stage('Send Job Success Notification'){
