@@ -1,5 +1,8 @@
 def call(String imageName){
 
-   sh "docker build -t ${imageName}:${BUILD_NUMBER} ."
+   docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
+          image = docker.build("${imageName}:${BUILD_NUMBER}")
+
+  }
    
 }
