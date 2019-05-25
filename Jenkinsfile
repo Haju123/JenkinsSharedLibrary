@@ -59,8 +59,9 @@ try{
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
       )
     }
-    echo "BUILD_STATUS is ${env.BUILD_STATUS}"
-    env.BUILD_STATUS = "FAILED"
+    echo "${currentBuild.results}"
+    currentBuild.result = 'FAILURE'
+    echo "${currentBuild.results}"
    }
 
 }
