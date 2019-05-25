@@ -17,7 +17,7 @@ try{
     
    stage('Setup and initialization') { 
       
-       setup "https://github.com/ChandniManak/MVC.git"
+       setup "https://github.com/ChandniManak/MVC.gi"
    }
     
     stage('Quality check with SonarQube'){
