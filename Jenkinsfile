@@ -1,11 +1,8 @@
 @Library('shared_library')_
 
-node(label:'SLAVE01') {
-
+node(label:'master') {
 
 try{
-
-def mvnHome
 
  stage('Send Job Started Notification'){
       emailext (
@@ -17,8 +14,8 @@ def mvnHome
     }
     
    stage('Setup and initialization') { 
-      mvnHome = MAVEN_HOME
-       setup mvnHome, "https://github.com/ChandniManak/MVC.git"
+      
+       setup "https://github.com/ChandniManak/MVC.git"
    }
     
     stage('Quality check with SonarQube'){
@@ -30,7 +27,7 @@ def mvnHome
     }
     
     stage('Build docker image for war file'){
-       createDockerImage "chandnimanak/project"
+       buildDockerImage "chandnimanak/project"
     }
     
     stage('Deploy Artifacts'){
