@@ -60,7 +60,7 @@ try{
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
       )
     }
-    echo ${env.BUILD_STATUS}
+    echo "${env.BUILD_STATUS}"
    }
 
 }
