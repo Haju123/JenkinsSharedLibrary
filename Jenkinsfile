@@ -28,7 +28,7 @@ try{
        sonarQualityGate "SONAR_SERVER"
     }
     
-    stage('Build docker image for war file'){
+    stage('Build and deploy image to hub'){
        buildDockerImage "chandnimanak/project"
     }
     
@@ -36,9 +36,6 @@ try{
         deployArtifacts "JFrog_Artifactory", "./target/*.war", "local-snapshot"
     }
     
-    stage('Upload image to docker hub'){
-        uploadDockerImage
-    }
     
      stage('Send Job Success Notification'){
       emailext (
