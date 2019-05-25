@@ -29,7 +29,7 @@ try{
     }
     
     stage('Build and deploy image to hub'){
-       buildDockerImage "chandnimanak/project", 'DockerHub'
+       buildDockerImage "chandnimanak/project", "DockerHub"
     }
     
     stage('Deploy Artifacts'){
