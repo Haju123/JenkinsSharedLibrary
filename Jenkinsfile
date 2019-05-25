@@ -60,7 +60,7 @@ try{
       )
     }
     echo "BUILD_STATUS is ${env.BUILD_STATUS}"
-    env.BUILD_STATUS = FALSE
+    env.BUILD_STATUS = ERROR
    }
 
 }
