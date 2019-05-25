@@ -34,6 +34,10 @@ try{
         deployArtifacts "JFrog_Artifactory", "./target/*.war", "local-snapshot"
     }
     
+    stage('Upload image to docker hub'){
+        uploadImage "chandnimanak/project"
+    }
+    
      stage('Send Job Success Notification'){
       emailext (
       subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
@@ -42,6 +46,8 @@ try{
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
     )
     }
+    
+    
     }
     
     catch(e){
