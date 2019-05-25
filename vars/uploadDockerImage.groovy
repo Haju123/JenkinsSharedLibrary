@@ -4,7 +4,7 @@ def call(String imageName){
 
  docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
           def buildImage = docker.build("${imageName}:${BUILD_NUMBER}")
-          buildImage.push("${imageName}:${env.BUILD_NUMBER}")
+          buildImage.push()
   }
 
 }
