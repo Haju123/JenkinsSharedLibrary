@@ -1,4 +1,4 @@
-def call(String mavenHome, String gitURL){
+def call(String gitURL){
 
     // Connect GitHub repository
     git "${gitURL}"    
