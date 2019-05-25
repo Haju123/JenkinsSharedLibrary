@@ -53,7 +53,7 @@ try{
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
       )
     }
-    
+    env.BUILD_STATUS = FAIL
    }
 
 }
