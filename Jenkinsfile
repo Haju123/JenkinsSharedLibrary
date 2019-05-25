@@ -2,7 +2,10 @@
 
 node(label:'SLAVE01') {
 
+
 try{
+
+def mvnHome
 
  stage('Send Job Started Notification'){
       emailext (
@@ -14,7 +17,8 @@ try{
     }
     
    stage('Setup and initialization') { 
-       setup "MAVEN_HOME", "https://github.com/ChandniManak/MVC.git"
+      mvnHome = MAVEN_HOME
+       setup mvnHome, "https://github.com/ChandniManak/MVC.git"
    }
     
     stage('Quality check with SonarQube'){
