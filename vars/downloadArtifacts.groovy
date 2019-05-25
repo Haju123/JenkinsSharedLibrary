@@ -1,4 +1,4 @@
-def call(String artifactoryServerName, String artifactDeployed, String repo){
+def call(String artifactoryServerName, String source, String destination){
 
  def SERVER_ID = "${artifactoryServerName}" 
         def server = Artifactory.server SERVER_ID
@@ -7,8 +7,8 @@ def call(String artifactoryServerName, String artifactDeployed, String repo){
         {
         "files": [
             {
-                "pattern": "${artifactDeployed}",
-                "target": "./${repo}/"
+                "pattern": "${source}",
+                "target": "./${destination}/"
             }
         ]
         }
