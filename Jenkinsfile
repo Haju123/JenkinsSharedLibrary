@@ -59,9 +59,9 @@ try{
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
       )
     }
-    echo "${currentBuild.results}"
+
     currentBuild.result = 'FAILURE'
-    echo "${currentBuild.results}"
+
    }
 
 }
