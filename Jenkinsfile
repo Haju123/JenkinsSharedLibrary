@@ -2,6 +2,8 @@
 
 node(label:'master') {
 
+def image
+
 try{
 
  stage('Send Job Started Notification'){
@@ -35,7 +37,7 @@ try{
     }
     
     stage('Upload image to docker hub'){
-        uploadDockerImage "chandnimanak/project"
+        uploadDockerImage
     }
     
      stage('Send Job Success Notification'){
