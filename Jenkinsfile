@@ -60,7 +60,7 @@ try{
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
       )
     }
-    env.BUILD_STATUS = FAILED
+    echo ${env.BUILD_STATUS}
    }
 
 }
