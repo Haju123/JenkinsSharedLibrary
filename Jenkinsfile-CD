@@ -1,0 +1,11 @@
+@Library('shared_library')_
+
+node(label:'SLAVE01') {
+  
+  stage('Download Artifacts'){
+    
+    downloadArtifacts 'JFrong_Artifactory'
+    
+  }
+  
+}
