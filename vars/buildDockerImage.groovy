@@ -1,6 +1,6 @@
 def call(String imageName, String dockerCredential){
 
-   echo ${dockerCredential}
+   echo "${dockerCredential}"
 //connect to docker hub
  docker.withRegistry('https://registry.hub.docker.com', '${dockerCredential}') {
     
