@@ -1,8 +1,8 @@
-def call(String imageName){
+def call(String imageName, String dockerCredential){
 
 
 //connect to docker hub
- docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
+ docker.withRegistry('https://registry.hub.docker.com', '${dockerCredential}') {
     
     //build docker image
     image = docker.build("${imageName}:${BUILD_NUMBER}")
