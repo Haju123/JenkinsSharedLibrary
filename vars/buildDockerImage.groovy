@@ -13,4 +13,7 @@ def call(String imageName, String dockerCredential){
     image.push()
     
    }
+   
+   sh "docker rmi -f "${imageName}:${BUILD_NUMBER}"
+   
 }
